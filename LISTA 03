@@ -1,0 +1,516 @@
+1 )
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Solicita ao usuário para inserir a sequência de valores
+        Console.WriteLine("Insira uma sequência de valores inteiros separados por espaços:");
+        string input = Console.ReadLine();
+
+        // Divide a entrada em uma matriz de strings
+        string[] valoresStr = input.Split(' ');
+
+        // Inicializa contadores
+        int positivos = 0;
+        int negativos = 0;
+        int zeros = 0;
+
+        // Itera sobre os valores e conta
+        foreach (string valorStr in valoresStr)
+        {
+            int valor = int.Parse(valorStr);
+            if (valor > 0)
+            {
+                positivos++;
+            }
+            else if (valor < 0)
+            {
+                negativos++;
+            }
+            else
+            {
+                zeros++;
+            }
+        }
+
+        // Imprime os resultados
+        Console.WriteLine("Número de valores positivos: " + positivos);
+        Console.WriteLine("Número de valores negativos: " + negativos);
+        Console.WriteLine("Número de zeros: " + zeros);
+    }
+}
+
+
+
+
+2 )
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Solicita ao usuário para inserir a sequência de valores
+        Console.WriteLine("Insira uma sequência de valores inteiros separados por espaços:");
+        string input = Console.ReadLine();
+
+        // Divide a entrada em uma matriz de strings
+        string[] valoresStr = input.Split(' ');
+
+        // Inicializa contadores
+        int totalValores = valoresStr.Length;
+        int positivos = 0;
+        int negativos = 0;
+        int zeros = 0;
+
+        // Itera sobre os valores e conta
+        foreach (string valorStr in valoresStr)
+        {
+            int valor = int.Parse(valorStr);
+            if (valor > 0)
+            {
+                positivos++;
+            }
+            else if (valor < 0)
+            {
+                negativos++;
+            }
+            else
+            {
+                zeros++;
+            }
+        }
+
+        // Calcula os percentuais
+        double percentualPositivos = (double)positivos / totalValores * 100;
+        double percentualNegativos = (double)negativos / totalValores * 100;
+        double percentualZeros = (double)zeros / totalValores * 100;
+
+        // Imprime os resultados
+        Console.WriteLine("Número de valores positivos: " + positivos + " - " + percentualPositivos.ToString("0.00") + "%");
+        Console.WriteLine("Número de valores negativos: " + negativos + " - " + percentualNegativos.ToString("0.00") + "%");
+        Console.WriteLine("Número de zeros: " + zeros + " - " + percentualZeros.ToString("0.00") + "%");
+    }
+}
+
+
+3 )
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int[] numeros = new int[10];
+
+        // Recebe os números do usuário
+        for (int i = 0; i < 10; i++)
+        {
+            Console.Write("Digite o {0}º número: ", i + 1);
+            numeros[i] = int.Parse(Console.ReadLine());
+        }
+
+        // Inicializa contadores
+        int divisivelPor3e9 = 0;
+        int divisivelPor2e5 = 0;
+
+        // Verifica divisibilidade e conta
+        foreach (int numero in numeros)
+        {
+            if (numero % 3 == 0 && numero % 9 == 0)
+            {
+                divisivelPor3e9++;
+            }
+            else if (numero % 2 == 0 && numero % 5 == 0)
+            {
+                divisivelPor2e5++;
+            }
+            else
+            {
+                Console.WriteLine("O número {0} não é divisível pelos valores.", numero);
+            }
+        }
+
+        // Apresenta os resultados
+        Console.WriteLine("Quantidade de números divisíveis por 3 e 9: " + divisivelPor3e9);
+        Console.WriteLine("Quantidade de números divisíveis por 2 e 5: " + divisivelPor2e5);
+    }
+}
+
+
+4 ) 
+using System;
+
+class Program
+{
+    static long CalcularFatorial(int n)
+    {
+        // Se n for 0, o fatorial é 1
+        if (n == 0)
+        {
+            return 1;
+        }
+
+        // Inicializa o fatorial como 1
+        long fatorial = 1;
+
+        // Calcula o fatorial
+        for (int i = 1; i <= n; i++)
+        {
+            fatorial *= i;
+        }
+
+        return fatorial;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.Write("Digite um número para calcular o fatorial: ");
+        int numero = int.Parse(Console.ReadLine());
+
+        // Calcula o fatorial do número fornecido
+        long resultado = CalcularFatorial(numero);
+
+        // Imprime o resultado
+        Console.WriteLine("{0}! = {1}", numero, resultado);
+    }
+}
+
+
+5 ) 
+using System;
+
+class Program
+{
+    static long CalcularFatorial(int n)
+    {
+        if (n == 0)
+        {
+            return 1;
+        }
+
+        long fatorial = 1;
+
+        for (int i = 1; i <= n; i++)
+        {
+            fatorial *= i;
+        }
+
+        return fatorial;
+    }
+
+    static void Main(string[] args)
+    {
+        Console.Write("Digite um valor inteiro positivo para N: ");
+        int N = int.Parse(Console.ReadLine());
+
+        double E = 1.0; // Inicializa E com o primeiro termo da série (1)
+
+        for (int i = 1; i <= N; i++)
+        {
+            E += 1.0 / CalcularFatorial(i);
+        }
+
+        Console.WriteLine("O valor de E é: " + E);
+    }
+}
+
+
+6 ) 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        double salario;
+        int numeroFilhos;
+        double somaSalario = 0;
+        int somaFilhos = 0;
+        int contadorPessoas = 0;
+        int contadorSalarioAte100 = 0;
+        double maiorSalario = double.MinValue;
+
+        // Loop para ler os dados de cada habitante
+        while (true)
+        {
+            Console.Write("Digite o salário do habitante (ou um valor negativo para encerrar): ");
+            salario = double.Parse(Console.ReadLine());
+
+            // Verifica se o loop deve ser encerrado
+            if (salario < 0)
+            {
+                break;
+            }
+
+            Console.Write("Digite o número de filhos do habitante: ");
+            numeroFilhos = int.Parse(Console.ReadLine());
+
+            // Atualiza estatísticas
+            somaSalario += salario;
+            somaFilhos += numeroFilhos;
+            contadorPessoas++;
+
+            if (salario <= 100)
+            {
+                contadorSalarioAte100++;
+            }
+
+            if (salario > maiorSalario)
+            {
+                maiorSalario = salario;
+            }
+        }
+
+        if (contadorPessoas > 0)
+        {
+            // Calcula médias
+            double mediaSalario = somaSalario / contadorPessoas;
+            double mediaFilhos = (double)somaFilhos / contadorPessoas;
+
+            // Calcula percentual de pessoas com salário até R$100,00
+            double percentualSalarioAte100 = (double)contadorSalarioAte100 / contadorPessoas * 100;
+
+            // Apresenta os resultados
+            Console.WriteLine("a) A média do salário da população: " + mediaSalario);
+            Console.WriteLine("b) A média do número de filhos: " + mediaFilhos);
+            Console.WriteLine("c) O maior salário: " + maiorSalario);
+            Console.WriteLine("d) O percentual de pessoas com salário até R$100,00: " + percentualSalarioAte100 + "%");
+        }
+        else
+        {
+            Console.WriteLine("Nenhum dado foi inserido.");
+        }
+    }
+}
+
+
+7 ) 
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite um valor inteiro e positivo para n: ");
+        int n = int.Parse(Console.ReadLine());
+
+        double soma = 0;
+
+        Console.WriteLine("Termos gerados:");
+
+        for (int i = 1; i <= n; i++)
+        {
+            double termo = 1.0 / i;
+            soma += termo;
+            Console.WriteLine("1/{0} = {1}", i, termo);
+        }
+
+        Console.WriteLine("\nO valor final de S é: " + soma);
+    }
+}
+
+
+8 ) 
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite o número de elementos da sequência de Fibonacci a serem gerados: ");
+        int L = int.Parse(Console.ReadLine());
+
+        // Verifica se o usuário digitou um número não negativo
+        if (L <= 0)
+        {
+            Console.WriteLine("Por favor, insira um número positivo maior que zero.");
+            return;
+        }
+
+        int a = 0;
+        int b = 1;
+
+        Console.WriteLine("Os {0} primeiros elementos da sequência de Fibonacci:", L);
+
+        // Imprime os L primeiros elementos da sequência de Fibonacci
+        for (int i = 0; i < L; i++)
+        {
+            Console.WriteLine(a);
+            int proximo = a + b;
+            a = b;
+            b = proximo;
+        }
+    }
+}
+
+
+9 )
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Console.Write("Digite um número limite para a soma dos elementos da sequência de Fibonacci: ");
+        int L = int.Parse(Console.ReadLine());
+
+        // Verifica se o usuário digitou um número não negativo
+        if (L <= 0)
+        {
+            Console.WriteLine("Por favor, insira um número positivo maior que zero.");
+            return;
+        }
+
+        int a = 0;
+        int b = 1;
+        int soma = 0;
+
+        // Calcula a soma dos elementos da sequência de Fibonacci menores que L
+        while (a < L)
+        {
+            soma += a;
+            int proximo = a + b;
+            a = b;
+            b = proximo;
+        }
+
+        Console.WriteLine("A soma dos elementos da sequência de Fibonacci menores que {0} é: {1}", L, soma);
+    }
+}
+
+
+10 ) 
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Inicialização das variáveis
+        int lucroMenor10 = 0;
+        int lucroEntre10e20 = 0;
+        int lucroMaior20 = 0;
+        double valorTotalCompra = 0;
+        double valorTotalVenda = 0;
+        double lucroTotal = 0;
+
+        while (true)
+        {
+            // Solicita ao usuário o preço de compra da mercadoria
+            Console.Write("Digite o preço de compra da mercadoria (ou 0 para encerrar): ");
+            double precoCompra = double.Parse(Console.ReadLine());
+
+            // Verifica se o preço de compra é 0 para encerrar o loop
+            if (precoCompra == 0)
+            {
+                break;
+            }
+
+            // Solicita ao usuário o preço de venda da mercadoria
+            Console.Write("Digite o preço de venda da mercadoria: ");
+            double precoVenda = double.Parse(Console.ReadLine());
+
+            // Calcula o lucro da mercadoria
+            double lucro = ((precoVenda - precoCompra) / precoCompra) * 100;
+
+            // Atualiza as estatísticas baseadas no lucro
+            if (lucro < 10)
+            {
+                lucroMenor10++;
+            }
+            else if (lucro >= 10 && lucro <= 20)
+            {
+                lucroEntre10e20++;
+            }
+            else
+            {
+                lucroMaior20++;
+            }
+
+            // Atualiza os valores totais de compra, venda e lucro
+            valorTotalCompra += precoCompra;
+            valorTotalVenda += precoVenda;
+            lucroTotal += precoVenda - precoCompra;
+        }
+
+        // Exibe as estatísticas
+        Console.WriteLine($"Número de produtos com lucro menor que 10%: {lucroMenor10}");
+        Console.WriteLine($"Número de produtos com lucro entre 10% e 20%: {lucroEntre10e20}");
+        Console.WriteLine($"Número de produtos com lucro maior que 20%: {lucroMaior20}");
+        Console.WriteLine($"Valor total de compra de todas as mercadorias: {valorTotalCompra}");
+        Console.WriteLine($"Valor total de venda de todas as mercadorias: {valorTotalVenda}");
+        Console.WriteLine($"Lucro total: {lucroTotal}");
+    }
+}
+
+
+11 )
+
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Inicialização das variáveis para contar os votos
+        int[] votosCandidatos = new int[4];
+        int votosNulos = 0;
+        int votosEmBranco = 0;
+
+        while (true)
+        {
+            // Solicita ao usuário o código do voto
+            Console.Write("Digite o código do voto (ou 0 para encerrar): ");
+            int codigoVoto = int.Parse(Console.ReadLine());
+
+            // Verifica se o código do voto é 0 para encerrar o loop
+            if (codigoVoto == 0)
+            {
+                break;
+            }
+
+            // Realiza a contagem dos votos de acordo com o código
+            switch (codigoVoto)
+            {
+                case 1:
+                    votosCandidatos[0]++;
+                    break;
+                case 2:
+                    votosCandidatos[1]++;
+                    break;
+                case 3:
+                    votosCandidatos[2]++;
+                    break;
+                case 4:
+                    votosCandidatos[3]++;
+                    break;
+                case 5:
+                    votosNulos++;
+                    break;
+                case 6:
+                    votosEmBranco++;
+                    break;
+                default:
+                    Console.WriteLine("Código de voto inválido.");
+                    break;
+            }
+        }
+
+        // Exibe o total de votos para cada candidato
+        for (int i = 0; i < votosCandidatos.Length; i++)
+        {
+            Console.WriteLine($"Total de votos para o candidato {i + 1}: {votosCandidatos[i]}");
+        }
+
+        // Exibe o total de votos nulos e em branco
+        Console.WriteLine($"Total de votos nulos: {votosNulos}");
+        Console.WriteLine($"Total de votos em branco: {votosEmBranco}");
+    }
+}
+
